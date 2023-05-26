@@ -18,6 +18,11 @@ function [error, A1, A2] = smoothness_least_squares(seis, t1, t2, WW, T1, T2)
     end
     % 构建系数矩阵
     A = WW(:, [t1, t2]);
+    %%%%% 左除
+        %要求扫描解的数量与真实解数量一致
+        %     FF = seis\A;
+        %     A1 = FF(1);
+        %     A2 = FF(2);
     % 执行最小二乘法求解
     sol = lsqnonneg(A, abs(seis));
     
